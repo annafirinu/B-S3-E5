@@ -7,11 +7,13 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "prestiti")
 public class Prestito {
+    @Id
+    @GeneratedValue
+    private int id;
     private LocalDate dataInizioPrestito;
     private LocalDate dataRestituzionePrevista;
     private LocalDate dataRestituzioneEffettiva;
 
-@Id
     @ManyToOne
     @JoinColumn(name = "utente_numero_di_tessera")
     private Utente utente;
@@ -31,6 +33,14 @@ public class Prestito {
 
     public LocalDate getDataInizioPrestito() {
         return dataInizioPrestito;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setDataInizioPrestito(LocalDate dataInizioPrestito) {
@@ -72,7 +82,8 @@ public class Prestito {
     @Override
     public String toString() {
         return "Prestito{" +
-                "dataInizioPrestito=" + dataInizioPrestito +
+                "id=" + id +
+                ", dataInizioPrestito=" + dataInizioPrestito +
                 ", dataRestituzionePrevista=" + dataRestituzionePrevista +
                 ", dataRestituzioneEffettiva=" + dataRestituzioneEffettiva +
                 ", utente=" + utente +
